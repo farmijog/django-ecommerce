@@ -3,7 +3,7 @@ from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 
 PAYMENT_OPTIONS = (
-    ('T', 'Transferencia'),
+    ('S', 'Stripe'),
     ('P', 'Paypal')
 )
 
