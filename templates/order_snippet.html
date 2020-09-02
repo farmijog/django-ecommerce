@@ -1,0 +1,49 @@
+<div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+    <div class="order-details-confirmation">
+        <div class="cart-page-heading">
+            <h5>Your Order</h5>
+            <ul class="order-details-form mb-4">
+              <li>
+                <span>Your Cart</span> <span class="badge badge-primary badge-pill"> {{ order.items.count }} </span>
+              </li>
+            </ul>
+        </div>
+        <ul class="order-details-form mb-4">
+          {% for order_item in order.items.all %}
+            <li>
+              <div>
+                <h6 class="my-0">{{ order_item.quantity }} x {{ order_item.item.title }} </h6>
+                <small class="text-muted"> {{ order_item.item.description }} </small>
+              </div>
+              <span class="text-muted"> {{ order_item.get_final_price }} </span>
+            </li>
+          {% endfor %}
+          {% if order.coupon %}
+          <li class="list-group-item d-flex justify-content-lg-between bg-light">
+            <div class="text-success">
+              <h6 class="my-0">Promo code</h6>
+              <small> {{ order.coupon.code }} </small>
+            </div>
+            <span class="text-success">-$ {{ order.coupon.amount }} </span>
+          </li>
+          {% endif %}
+          <li class="list-group-item d-flex justify-content-between" style="border: 0px;">
+            <span> Total </span>
+            <strong> {{ order.get_total }} </strong>
+          </li>
+        </ul>
+        {% if DISPLAY_COUPON_FORM %}
+        <form class="card p-2" action="{% url 'core:add-coupon' %}" method="POST">
+          {% csrf_token %}
+          <div class="input-group">
+             
+              {{ couponform.code }}
+              <div class="input-group-append">
+                  <button class="btn btn-primary btn-md m-0" type="submit">Redeem</button>
+              </div>
+          </div>
+        </form>
+        {% endif %}
+    </div>
+</div>
+    

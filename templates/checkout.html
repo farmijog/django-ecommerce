@@ -31,16 +31,7 @@
                             <div class="col-12 mb-3">
                                 <label for="country">Country <span>*</span></label><br>
                                 {{ form.country }}
-                                <!-- <select class="w-100" id="country">
-                                    <option value="usa">United States</option>
-                                    <option value="uk">United Kingdom</option>
-                                    <option value="ger">Germany</option>
-                                    <option value="fra">France</option>
-                                    <option value="ind">India</option>
-                                    <option value="aus">Australia</option>
-                                    <option value="bra">Brazil</option>
-                                    <option value="cana">Canada</option>
-                                </select> -->
+                             
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="zip">ZIP <span>*</span></label>
@@ -73,24 +64,8 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
-                <div class="order-details-confirmation">
+            {% include "order_snippet.html" %}
 
-                    <div class="cart-page-heading">
-                        <h5>Your Order</h5>
-                        <p>The Details</p>
-                    </div>
-
-                    <ul class="order-details-form mb-4">
-                        <li><span>Product</span> <span>Total</span></li>
-                        <li><span>Cocktail Yellow dress</span> <span>$59.90</span></li>
-                        <li><span>Subtotal</span> <span>$59.90</span></li>
-                        <li><span>Shipping</span> <span>Free</span></li>
-                        <li><span>Total</span> <span>$59.90</span></li>
-                    </ul>
-                    <a href="#" class="btn essence-btn">Place Order</a>
-                </div>
-            </div>
         </div>
     </div>
 

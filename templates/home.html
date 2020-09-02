@@ -179,7 +179,8 @@
                                         <a href="{{ item.get_absolute_url }}">
                                         <!-- Product Image -->
                                         <div class="product-img">
-                                            <img src="{% static 'img/product-img/product-1.jpg' %}" alt="">
+                                            <img src="{{ item.image.url }}" alt="">
+                                            <!-- <img src="{% static 'img/product-img/product-1.jpg' %}" alt=""> -->
                                             <!-- Hover Thumb -->
                                             <!-- <img class="hover-img" src="{% static 'img/product-img/product-2.jpg' %}" alt=""> -->
 
