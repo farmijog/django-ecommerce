@@ -8,23 +8,30 @@ PAYMENT_OPTIONS = (
 )
 
 class CheckoutForm(forms.Form):
-    street_address = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control mb-3',
-        'placeholder': 'Villa Gabriela Mistral pje La Huella 1014'
-    }))
-    apartment_address = forms.CharField(required=False, widget=forms.TextInput(attrs={
-        'class': 'form-control mb-3',
-        'placeholder': 'Departamento N°24'
-    }))
-    country = CountryField(blank_label='(select country)').formfield(
+    shipping_address = forms.CharField(required=False)
+    shipping_address2 = forms.CharField(required=False)
+    shipping_country = CountryField(blank_label='(select country)').formfield(
+        required=False,
         widget=CountrySelectWidget(attrs={
             'class': 'w-100'
         }))
-    zip = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control mb-3 w-50'
-    }))
+    shipping_zip = forms.CharField(required=False)
+
+    billing_address = forms.CharField(required=False)
+    billing_address2 = forms.CharField(required=False)
+    billing_country = CountryField(blank_label='(select country)').formfield(
+        required=False,
+        widget=CountrySelectWidget(attrs={
+            'class': 'w-100'
+        }))
+    billing_zip = forms.CharField(required=False)
+
     same_billing_address = forms.BooleanField(required=False)
-    save_info = forms.BooleanField(required=False)
+    set_default_shipping = forms.BooleanField(required=False)
+    use_default_shipping = forms.BooleanField(required=False)
+    set_default_billing = forms.BooleanField(required=False)
+    use_default_billing = forms.BooleanField(required=False)
+
     payment_option = forms.ChoiceField(
         widget=forms.RadioSelect, choices=PAYMENT_OPTIONS)
 
@@ -34,3 +41,14 @@ class CouponForm(forms.Form):
         'class': 'form-control',
         'placeholder': 'Promo code'
     }))
+
+class RefundForm(forms.Form):
+    ref_code = forms.CharField()
+    message = forms.CharField(widget=forms.Textarea(attrs={
+        'rows': 4
+    }))
+    email = forms.EmailField()
+
+
+
+
